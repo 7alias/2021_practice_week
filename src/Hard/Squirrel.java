@@ -23,17 +23,18 @@ public class Squirrel {
 
             i++;
             sum += nuts[i];
-            if (i+1 == nuts.length) {
+            if (i == nuts.length) {
                 break;
-            } else if (nuts[i] < 0) {
+            } else if (nuts[i] < 0 && Math.abs(nuts[i])>Math.abs(nuts[i+1])) {
                 sum += nuts[i + 1];
                 i++;
 
             } else {
                 sum += nuts[i];
+
             }
 
-        } while (i < this.nuts.length - 1);
+        } while (i < this.nuts.length -1);
         if (sum < 0) {
             sum = 0;
         }
