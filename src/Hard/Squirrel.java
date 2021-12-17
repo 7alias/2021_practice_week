@@ -12,17 +12,30 @@ public class Squirrel {
 
     public int getNuts(int index) {
 
-        return nuts[index-1];
+        return nuts[index - 1];
 
     }
-    public int maxNuts(){
+
+    public int maxNuts() {
         int sum = 0;
-        for (int i =0; i<nuts.length; i++){
-            if (nuts[i]<0){sum +=nuts[i+1]; i++; continue;}
-else {
-            sum += nuts[i];}
+        int i = 0;
+        do {
+            sum += nuts[i];
+            i++;
+            if (i+1 == nuts.length) {
+                break;
+            } else if (nuts[i] < 0) {
+                sum += nuts[i + 1];
+                continue;
+
+            } else {
+                sum += nuts[i];
+            }
+
+        } while (i < this.nuts.length - 1);
+        if (sum < 0) {
+            sum = 0;
         }
-if (sum <0){sum =0;}
 
         return sum;
     }
