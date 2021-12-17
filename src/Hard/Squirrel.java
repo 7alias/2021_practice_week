@@ -20,13 +20,14 @@ public class Squirrel {
         int sum = 0;
         int i = 0;
         do {
-            sum += nuts[i];
+
             i++;
+            sum += nuts[i];
             if (i+1 == nuts.length) {
                 break;
             } else if (nuts[i] < 0) {
                 sum += nuts[i + 1];
-                continue;
+                i++;
 
             } else {
                 sum += nuts[i];
