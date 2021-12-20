@@ -12,20 +12,25 @@ public class Squirrel {
             bigArray[i] = nuts[i];
         }
     }
+
     public int getNuts(int index) {
         return bigArray[index - 1];
     }
+
     public int maxNuts() {
         int sum = 0;
-        for (int i = 0; i < bigArray.length; i++) {
-            if (bigArray[i] < 0 && bigArray[i+1] > bigArray[i]) {
-                sum += bigArray[i + 1];
-
-            } else {
+        for (int i = 0; i < nuts.length; i++) {
+            if (bigArray[i] > 0) {
                 sum += bigArray[i];
+            } else if (bigArray[i] < 0 && bigArray[i] > bigArray[i + 1]) {
+                sum += bigArray[i];
+            } else if (bigArray[i + 1] < 0 && bigArray[i] < bigArray[i + 1]) {
+                sum += bigArray[i+1];
             }
         }
-        if (sum < 0) {sum = 0;}
+        if (sum < 0) {
+            sum = 0;
+        }
         return sum;
     }
 }

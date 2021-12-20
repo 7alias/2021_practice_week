@@ -9,7 +9,10 @@ public class Launcher {
         System.out.println("Squirrel1: " + s.maxNuts());
         Squirrel s2 = new Squirrel(new int[] {1, -2, 3, 1, -1, -4, 2, 3});
         System.out.println(s2.maxNuts());
-        //System.out.println(s.getNuts(1));
+
+        System.out.println();
+
+        System.out.println(s.getNuts(1));
         Squirrel s3 = new Squirrel(new int[]{1, -2, 3, 1, -1, -4, 2, 3});
         System.out.println(s3.maxNuts());
 
