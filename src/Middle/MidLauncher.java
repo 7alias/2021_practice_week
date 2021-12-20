@@ -1,9 +1,9 @@
 package Middle;
 
-import java.sql.Array;
-import java.util.Arrays;
 
-public class Main {
+
+public class MidLauncher {
+
     public static void main(String[] args) {
 
      /*  ToTable toTable = new ToTable(new int[]{1, 2, 3, 4, 5, 6}, 3, 2);

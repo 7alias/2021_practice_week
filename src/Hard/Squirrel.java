@@ -2,46 +2,32 @@ package Hard;
 
 public class Squirrel {
 
-
     int[] nuts;
-
+    int[] bigArray;
 
     public Squirrel(int[] nuts) {
+        bigArray = new int[nuts.length + 1];
         this.nuts = nuts;
+        for (int i = 0; i < nuts.length; i++) {
+            bigArray[i] = nuts[i];
+        }
     }
-
     public int getNuts(int index) {
-
-        return nuts[index - 1];
-
+        return bigArray[index - 1];
     }
-
     public int maxNuts() {
         int sum = 0;
-        int i = 0;
-        do {
-
-            i++;
-            sum += nuts[i];
-            if (i == nuts.length) {
-                break;
-            } else if (nuts[i] < 0 && Math.abs(nuts[i])>Math.abs(nuts[i+1])) {
-                sum += nuts[i + 1];
-                i++;
+        for (int i = 0; i < bigArray.length; i++) {
+            if (bigArray[i] < 0 && bigArray[i+1] > bigArray[i]) {
+                sum += bigArray[i + 1];
 
             } else {
-                sum += nuts[i];
-
+                sum += bigArray[i];
             }
-
-        } while (i < this.nuts.length -1);
-        if (sum < 0) {
-            sum = 0;
         }
-
+        if (sum < 0) {sum = 0;}
         return sum;
     }
-
 }
     /*
     конструктор, в который подают массив nuts ( в каждой ячейке которого хранится значение n,
