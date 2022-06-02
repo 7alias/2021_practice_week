@@ -1,59 +1,35 @@
 package Hard;
 
 public class Squirrel {
-
     int[] nuts;
     int[] bigArray;
 
     public Squirrel(int[] nuts) {
-        bigArray = new int[nuts.length + 1];
         this.nuts = nuts;
-        for (int i = 0; i < nuts.length; i++) {
-            bigArray[i] = nuts[i];
-        }
     }
 
-    public int getNuts(int index) {
-        return bigArray[index - 1];
+    int getNuts(int n) {
+        return nuts[n];
     }
 
-    public int maxNuts() {
-        int sum = 0;
-        for (int i = 0; i < nuts.length; i++) {
-            if (bigArray[i] > 0) {
-                sum += bigArray[i];
-            } else if (bigArray[i] < 0 && bigArray[i] > bigArray[i + 1]) {
-                sum += bigArray[i];
-            } else if (bigArray[i + 1] < 0 && bigArray[i] < bigArray[i + 1]) {
-                sum += bigArray[i+1];
+    int maxNuts() {
+        if (nuts.length > 1) {
+            bigArray = nuts.clone();
+            bigArray[1] = max(bigArray[1], bigArray[0] + bigArray[1]);
+            if (bigArray[1] < 0) bigArray[1] = 0;
+            for (int i = 2; i < bigArray.length; i++) {
+                bigArray[i] = max(bigArray[i] + bigArray[i - 1], bigArray[i] + bigArray[i - 2]);
+                if (bigArray[i] < 0) bigArray[i] = 0;
             }
-        }
-        if (sum < 0) {
-            sum = 0;
-        }
-        return sum;
+            int a = max(bigArray[bigArray.length - 2], bigArray[bigArray.length - 1]);
+            return max(0, a);
+        } else return max(0, nuts[0]);
+    }
+
+    private int max(int a, int b) {
+        if (a >= b) return a;
+        return b;
     }
 }
-    /*
-    конструктор, в который подают массив nuts ( в каждой ячейке которого хранится значение n,
-                                                если n — положительное, то на пеньке с таким индексом белочка найдет n орешков,
-                                                если отрицательное, то на этом пеньке белочка потеряет n орешков);
-    метод getNuts(int index), возвращает число — сколько найдет или потеряет белочка на пеньке с индексом n;
-    метод maxNuts(), также возвращает число — какое максимальное число орешков белочка донесет до дома.
-
-    Пример:
-
-    Ввод
-
-
-
-    Вывод
-
-6
-        9
-
-
-
-*/
 
 
